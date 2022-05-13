@@ -8,6 +8,8 @@ class AnasayfaController extends Controller
 {
     public function index()
     {
-        return view('anasayfa');
+        $isim = 'Ayşe Meva';
+        $soyisim = 'Karpınar';
+        return view('anasayfa',with(['isim' => $isim,'soyisim'=>$soyisim]));
     }
 }
