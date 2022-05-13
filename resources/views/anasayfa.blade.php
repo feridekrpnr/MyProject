@@ -12,6 +12,60 @@
 
     </head>
     <body class="antialiased">
-       Merhaba {{$isim . ' ' . $soyisim}}
+    @php
+        $yas =29;
+    @endphp
+       Merhaba {{$isim . ' ' . $soyisim}}, {{$yas}} yaşındasın.
+    <hr>
+    @if($isim == 'Ayşe Meva')
+        Hoşgeldin Patron
+    @elseif($isim == 'Esra')
+         Hoşgeldin Esra
+    @else
+         Hoşgeldin
+    @endif
+    <hr>
+    @switch($isim)
+        @case('Cem')
+        Hoşgeldin Cem
+        @break
+
+        @case('Esra')
+        Hoşgeldin Esra
+        @break
+
+        @default
+        Hoşgeldin
+    @endswitch
+    <hr>
+    @for($i=0;$i<10;$i++)
+        Döngü Değeri: {{$i}}
+    @endfor
+    <hr>
+    @php
+    $i=0;
+    @endphp
+    @while($i<=10)
+        Döngü Değeri: {{$i}}
+        @php
+        $i++;
+        @endphp
+    @endwhile
+    <hr>
+    @foreach($isimler as $isim)
+         {{$isim . ($isim !== end($isimler) ? ',' : '')}}
+    @endforeach
+    <hr>
+
+    @foreach($kullanicilar as $kullanici)
+        @continue($kullanici['id'] == 1)
+        <li>{{ $kullanici['id']. '-' . $kullanici['kullanici_adi'] }}</li>
+        @break($kullanici['id'] == 4)
+    @endforeach
+    <hr>
+    @php
+        $html = "<b> Test </b>";
+    @endphp
+        {!! $html !!}
     </body>
 </html>
